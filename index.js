@@ -74,14 +74,14 @@ async function startKlineStream() {
         stream(highVolCoins, t);
       }
     });
-    setIntervalAsync(() => {
-      let subscriptions = binance.futuresSubscriptions();
-      for (let interval in endpoints) {
-        if (!subscriptions[endpoints[interval]]) {
-          stream(highVolCoins, interval);
-        }
-      }
-    }, 1000 * 5);
+    // setIntervalAsync(() => {
+    //   let subscriptions = binance.futuresSubscriptions();
+    //   for (let interval in endpoints) {
+    //     if (!subscriptions[endpoints[interval]]) {
+    //       stream(highVolCoins, interval);
+    //     }
+    //   }
+    // }, 1000 * 5);
   } catch (error) {
     console.log("error", error);
   }
