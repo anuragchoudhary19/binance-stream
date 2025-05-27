@@ -69,7 +69,10 @@ async function startKlineStream() {
       .map((coin) => coin.symbol);
     // console.log(highVolCoins);
     timeframes.forEach((t) => {
-      stream(highVolCoins, t);
+      let subscriptions = binance.futuresSubscriptions();
+      if (!subscriptions[endpoints[t]]) {
+        stream(highVolCoins, t);
+      }
     });
     setIntervalAsync(() => {
       let subscriptions = binance.futuresSubscriptions();
