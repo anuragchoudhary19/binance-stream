@@ -84,7 +84,9 @@ async function startKlineStream() {
   }
 }
 startKlineStream();
-
+app.get("/health", (req, res) => {
+  res.send({ ok: true });
+});
 app.get("/stream", (req, res) => {
   try {
     res.setHeader("Content-Type", "text/event-stream");
